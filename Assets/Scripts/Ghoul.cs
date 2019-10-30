@@ -30,15 +30,17 @@ public class Ghoul : MonoBehaviour
 
     private  PlayerController player;
     public bool canAttack;
+    private NavMeshAgent agent;
 
 
-	public enum State { Stationary, Chase, Attack, Stunned, Dead};
+    public enum State { Stationary, Chase, Attack, Stunned, Dead};
 	public State state;
 
     // Start is called before the first frame update
     void Start()
     {
-		currentLife == maxLife;
+        agent = GetComponent<NavMeshAgent>();
+        currentLife = maxLife;
 		player = GetComponent<PlayerController>();
 		physicCollider = GetComponent<Collider>();
 		canAttack = false;
@@ -57,9 +59,6 @@ public class Ghoul : MonoBehaviour
 			case State.Attack:
 				UpdateAttack();
 				break;
-			case State.Stunned:
-				UpdateStunned();
-				break;
 			case State.Dead:
 				UpdateDead();
 				break;
@@ -75,8 +74,12 @@ public class Ghoul : MonoBehaviour
     {
 
         rangeDetection = findRange;
+        agent.stoppingDistance = 2.0f;
+        agent.speed = chaseSpeed;
 
         state = State.Chase;
+
+
     }
 
 	void SetAttack()
@@ -102,7 +105,7 @@ public class Ghoul : MonoBehaviour
 
 
 
-	/*public void Attack()
+	public void Attack()
     {
 
         Collider[] hits = Physics.OverlapSphere(transform.position, rangeAttack);
@@ -118,24 +121,38 @@ public class Ghoul : MonoBehaviour
         }
 
         //if (canAttack) anim.SetTrigger("Attack");
-        else SetChase();
+        //SetChase();
         canAttack = false;
 
     }
-	*/
+	
 
 
-/*	void UpdateChase()
+	void UpdateChase()
     {
         TrackingTarget();
-
+        agent.SetDestination(targetTransform.position);
+        /*
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             SetAttack();
         }
+        
+    */
 
     }
-*/
+
+    void UpdateAttack()
+    {
+
+    }
+
+
+    void UpdateDead()
+    {
+
+    }
+
     void TrackingTarget()
     {
         targetDetected = false;
