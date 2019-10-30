@@ -104,6 +104,11 @@ public class PlayerController : MonoBehaviour
         movementAxis = inputAxis;
     }
 
+    public void damagePlayer(float attackDamage)
+    {
+        life -= attackDamage;
+    }
+
     //POWER UPs----------------------------------------------------------
     //-------------------------------------------------------------------
     //-------------------------------------------------------------------

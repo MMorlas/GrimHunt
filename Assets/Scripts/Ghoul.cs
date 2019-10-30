@@ -32,6 +32,8 @@ public class Ghoul : MonoBehaviour
     public bool canAttack;
     private NavMeshAgent agent;
 
+    private Animator anim;
+
 
     public enum State { Stationary, Chase, Attack, Stunned, Dead};
 	public State state;
@@ -43,7 +45,8 @@ public class Ghoul : MonoBehaviour
         currentLife = maxLife;
 		player = GetComponent<PlayerController>();
 		physicCollider = GetComponent<Collider>();
-		canAttack = false;
+        anim = GetComponent<Animator>();
+        canAttack = false;
 
 		SetChase();		 
     }
@@ -72,10 +75,13 @@ public class Ghoul : MonoBehaviour
 
     void SetChase()
     {
-
+        anim.SetTrigger("EndAttack");
         rangeDetection = findRange;
         agent.stoppingDistance = 2.0f;
         agent.speed = chaseSpeed;
+        agent.isStopped = false;
+
+        //anim.SetBool("isMoving", true);
 
         state = State.Chase;
 
@@ -84,9 +90,9 @@ public class Ghoul : MonoBehaviour
 
 	void SetAttack()
     {
-
-		//STOP ANIMATION WALK
-        //ANIMATION ATTACK
+        agent.isStopped = true;
+        //anim.SetBool("isMoving", false);
+        anim.SetTrigger("Attack");
         state = State.Attack;
 
     }
@@ -105,26 +111,7 @@ public class Ghoul : MonoBehaviour
 
 
 
-	public void Attack()
-    {
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, rangeAttack);
-        for (int i = 0; i < hits.Length; i++)
-        {
-            if (hits[i].tag == "Player")
-            {
-                canAttack = true;
-                //hits[i].GetComponent<PlayerController>().Damage(explosionDamage);
-            }
-
-
-        }
-
-        //if (canAttack) anim.SetTrigger("Attack");
-        //SetChase();
-        canAttack = false;
-
-    }
 	
 
 
@@ -133,13 +120,13 @@ public class Ghoul : MonoBehaviour
 
         TrackingTarget();
         agent.SetDestination(targetTransform.position);
-        /*
+
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             SetAttack();
         }
         
-		*/
+		
 
     }
 
@@ -153,6 +140,8 @@ public class Ghoul : MonoBehaviour
     {
 
     }
+
+
 
     void TrackingTarget()
     {
@@ -178,8 +167,26 @@ public class Ghoul : MonoBehaviour
 
         }
     }
+    
+    public void Attack()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, rangeAttack);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].tag == "Player")
+            {
+                canAttack = true;
 
+                hits[i].GetComponent<PlayerController>().damagePlayer(attackDamage);
+            }
+        }
 
+        if (canAttack) anim.SetTrigger("Attack");
+        else SetChase();
+        canAttack = false;
+
+    }
+    
 
 
     private void OnDrawGizmos()

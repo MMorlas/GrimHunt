@@ -2457,8 +2457,9 @@ GameObject:
   - component: {fileID: 1838761985}
   - component: {fileID: 1838761984}
   - component: {fileID: 1838761983}
-  - component: {fileID: 1838761982}
   - component: {fileID: 1838761987}
+  - component: {fileID: 1838761982}
+  - component: {fileID: 1838761988}
   m_Layer: 0
   m_Name: GHOUL
   m_TagString: Untagged
@@ -2478,14 +2479,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f678fee35c5b642a33037a624f6b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 3
+  maxLife: 5
   currentLife: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 512
-  rangeDetection: 8
-  findRange: 200
-  chaseSpeed: 5
+  rangeDetection: 20.9
+  findRange: 21
+  chaseSpeed: 3
   rangeAttack: 3
   attackDamage: 0.5
   velocityAttack: 0.5
@@ -2558,7 +2559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838761981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7501, y: 1.53, z: -9.642969}
+  m_LocalPosition: {x: -24.68, y: 1.53, z: -9.642969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2586,6 +2587,25 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &1838761988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838761981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94d5a4e3b2551b840b48f97e0fa3e071, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!43 &1851732957
 Mesh:
   m_ObjectHideFlags: 0
