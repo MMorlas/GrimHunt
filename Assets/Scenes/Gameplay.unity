@@ -2485,7 +2485,7 @@ MonoBehaviour:
     m_Bits: 512
   rangeDetection: 8
   findRange: 200
-  chaseSpeed: 0
+  chaseSpeed: 5
   rangeAttack: 3
   attackDamage: 0.5
   velocityAttack: 0.5

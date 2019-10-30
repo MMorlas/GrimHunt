@@ -130,6 +130,7 @@ public class Ghoul : MonoBehaviour
 
 	void UpdateChase()
     {
+
         TrackingTarget();
         agent.SetDestination(targetTransform.position);
         /*
@@ -138,7 +139,7 @@ public class Ghoul : MonoBehaviour
             SetAttack();
         }
         
-    */
+		*/
 
     }
 
