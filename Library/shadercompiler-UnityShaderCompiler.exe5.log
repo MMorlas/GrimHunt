@@ -1,30 +1,6 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=113975 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=68532 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=25750 outsize=15193 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=1326 outsize=678 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=2648 outsize=1945 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=9347 outsize=9146 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=11912 outsize=1172 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=13624 outsize=2094 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=21554 outsize=15324 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=7247 outsize=8217 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=36515 outsize=31493 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15717 outsize=3063 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=9814 outsize=4045 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=5725 outsize=629 ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=7138 outsize=12482 kw=DECALS_3RT DEBUG_DISPLAY _NORMALMAP_TANGENT_SPACE _NORMALMAP _MASKMAP _EMISSIVE_COLOR_MAP pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=8218 outsize=96634 kw=DECALS_3RT SHADOW_LOW DEBUG_DISPLAY USE_FPTL_LIGHTLIST _NORMALMAP_TANGENT_SPACE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
