@@ -48,7 +48,7 @@ public class Arrow : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-        if(collision.collider.tag != "Arrow")
+        if(collision.collider.tag != "Arrow" && collision.collider.tag != "Player")
         {
             hitSomething = true;
             Stick();

@@ -41,6 +41,10 @@ public class Ghoul : EnemyBase
     public enum State { Stationary, Chase, Attack, Stunned, Dead};
 	public State state;
 
+
+	SpawnTemporalUpgrade spawn;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +54,9 @@ public class Ghoul : EnemyBase
 		physicCollider = GetComponent<Collider>();
         anim = GetComponent<Animator>();
         canAttack = true;
+
+		spawn = GameObject.FindGameObjectWithTag("RandomSpawn").GetComponent<SpawnTemporalUpgrade>();
+
 
 		SetChase();		 
     }
@@ -72,6 +79,11 @@ public class Ghoul : EnemyBase
 				break;
 
 		}
+
+		if (currentLife <= 0)
+        {
+            SetDead();
+        }
     }
 
 
@@ -106,9 +118,12 @@ public class Ghoul : EnemyBase
 
         physicCollider.enabled = false;
 
+		spawn.isDead = true;
+
 		//STOP ANIMATION WALK
 		//ANIMATION DIE
-        Destroy(gameObject, 1.5f);
+		gameObject.SetActive(false);
+        //Destroy(gameObject, 1.5f);
 
         state = State.Dead;
     }

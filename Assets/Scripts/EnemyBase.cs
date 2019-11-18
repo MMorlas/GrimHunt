@@ -9,10 +9,13 @@ public class EnemyBase : MonoBehaviour
 
     public float speed;
 
+	SpawnTemporalUpgrade spawn;
+
 
     // Start is called before the first frame update
     void Start()
     {
+		spawn = GameObject.FindGameObjectWithTag("RandomSpawn").GetComponent<SpawnTemporalUpgrade>();
         currentLife = maxLife;
     }
 
@@ -22,21 +25,26 @@ public class EnemyBase : MonoBehaviour
         
     }
 
+	
     public virtual void Damage(float hit)
     {
         currentLife -= hit;
         Debug.Log("ATACA");
-
+		/*
         if (currentLife <= 0)
         {
             currentLife = 0;
+
+			spawn.isDead = true;
             Defeat();
         }
+		*/
     }
-
+	/*
     public void Defeat()
     {
         Destroy(gameObject);
     }
-
+	
+	*/
 }

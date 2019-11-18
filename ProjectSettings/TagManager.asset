@@ -12,6 +12,7 @@ TagManager:
   - DealItem
   - ShopE
   - Enemy
+  - RandomSpawn
   layers:
   - Default
   - TransparentFX
