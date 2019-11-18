@@ -118,12 +118,11 @@ public class Ghoul : EnemyBase
 
         physicCollider.enabled = false;
 
-		spawn.isDead = true;
+		spawn.Spawn();
 
 		//STOP ANIMATION WALK
 		//ANIMATION DIE
-		gameObject.SetActive(false);
-        //Destroy(gameObject, 1.5f);
+        Destroy(gameObject);
 
         state = State.Dead;
     }

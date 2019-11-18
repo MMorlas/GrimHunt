@@ -24,15 +24,17 @@ public class PlayerController : MonoBehaviour
 
     [Header("Properties")]
     public float forceToGround = Physics.gravity.y;
-    public float jumpSpeed = 5;
+    public float jumpSpeed = 8;
+    public float originalJumpSpeed = 8;
     public float moveSpeed = 5;
     public float originalSpeed = 5;
     public float movesprint = 8;
 
     public bool isDead;
 
+    public float temporalUpgradeCounter;
 
-
+    public bool canJump;
 
 
     private PlayerUI ui;
@@ -43,6 +45,9 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+
+        canJump = true;
 
 
     }
@@ -62,7 +67,35 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = originalSpeed;
         }
+        /////////////////////////////////////////////////////////////////////////////////
+        if(jumpSpeed > originalJumpSpeed)
+        {
+            if(temporalUpgradeCounter <= 0f)
+            {
+                jumpSpeed = originalJumpSpeed;
+                temporalUpgradeCounter = 5f;
+            }
 
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+
+        if(canJump == false)
+        {
+            if (temporalUpgradeCounter <= 0f)
+            {
+                canJump = true;
+                temporalUpgradeCounter = 5f;
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+        /////////////////////////////////////////////////////////////////////
         if(life <= 0)
         {
             isDead = true;
@@ -100,11 +133,15 @@ public class PlayerController : MonoBehaviour
 
     public void StartJump() 
     {
-        if (controller.isGrounded) 
+        if(canJump)
         {
-            moveDirection.y = jumpSpeed;
-            jump = true; 
+            if (controller.isGrounded)
+            {
+                moveDirection.y = jumpSpeed;
+                jump = true;
+            }
         }
+
     }
 
     
@@ -158,6 +195,20 @@ public class PlayerController : MonoBehaviour
         attackSpeed += attackSpeedUp;
 
     }
+
+
+    //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
+
+
+
+    //POWER UPs TEMPORALES----------------------------------------------------------
+    //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
+
+    
 
 
     //-------------------------------------------------------------------
