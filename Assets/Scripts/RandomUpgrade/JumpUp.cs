@@ -24,14 +24,10 @@ public class JumpUp : MonoBehaviour
     {
         if (collision.tag == impactTag)
         {
-			upJump();
-            gameObject.SetActive(false);
+			player.upjump = true;
+            Destroy(gameObject);
         }
 
     }
 
-	void upJump()
-	{
-		player.jumpSpeed += 8;
-	}
 }

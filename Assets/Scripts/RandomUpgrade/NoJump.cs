@@ -24,14 +24,10 @@ public class NoJump : MonoBehaviour
     {
         if (collision.tag == impactTag)
         {
-            noJump();
-            gameObject.SetActive(false);
+            player.nojump = true;
+            Destroy(gameObject);
         }
 
     }
 
-    void noJump()
-    {
-        player.canJump = false;
-    }
 }

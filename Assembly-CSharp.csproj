@@ -78,8 +78,12 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\RandomGold.cs" />
+    <Compile Include="Assets\Scripts\RandomUpgrade\DamageDown.cs" />
+    <Compile Include="Assets\Scripts\RandomUpgrade\DoubleHurt.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\JumpUp.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\NoJump.cs" />
+    <Compile Include="Assets\Scripts\RandomUpgrade\NoShoot.cs" />
+    <Compile Include="Assets\Scripts\RandomUpgrade\Slowed.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\SpawnTemporalUpgrade.cs" />
     <Compile Include="Assets\Scripts\Scroll\DamageUp.cs" />
     <Compile Include="Assets\Scripts\Scroll\Scroll.cs" />

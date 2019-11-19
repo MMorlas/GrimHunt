@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour
     private float timeCounter;
 
     [Header("Stats")]
-    public float life = 3;
-    public float maxlife = 3;
-    public float money = 0;
-    public float damage = 1;
-    public float attackSpeed = 1;
+    public float life = 3f;
+    public float maxlife = 3f;
+    public float money = 0f;
+    public float damage = 1f;
+    public float attackSpeed = 1f;
 
     private CharacterController controller;
     public float gravityMagnitude = 1.0f; 
@@ -24,11 +24,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Properties")]
     public float forceToGround = Physics.gravity.y;
-    public float jumpSpeed = 8;
-    public float originalJumpSpeed = 8;
-    public float moveSpeed = 5;
-    public float originalSpeed = 5;
-    public float movesprint = 8;
+    public float jumpSpeed = 8f;
+    public float originalJumpSpeed = 8f;
+    public float moveSpeed = 5f;
+    public float movesprint = 8f;
+    public float saveSprintSpeed;
 
     public bool isDead;
 
@@ -39,6 +39,26 @@ public class PlayerController : MonoBehaviour
 
     private PlayerUI ui;
 
+
+    [Header("TemporalUpgrades")]
+    public bool upjump;
+    public bool nojump;
+    public bool slowed;
+    public bool canSprint;
+    public bool canShoot;
+    public bool doubleHurt;
+    public bool damageDown;
+
+    public float halfDamage;
+    public float halfSpeed;
+    public float saveDamage;
+    public float saveSpeed;
+    public float stateJumpUp = 14;
+
+
+
+
+
     private void Start()
     {
         isDead = false;
@@ -48,6 +68,13 @@ public class PlayerController : MonoBehaviour
 
 
         canJump = true;
+        canSprint = true;
+        canShoot = true;
+
+        upjump = false;
+        nojump = false;
+        slowed = false;
+        doubleHurt = false;
 
 
     }
@@ -57,37 +84,48 @@ public class PlayerController : MonoBehaviour
         GravitySimulation();
         MovementSimulation();
         controller.Move(moveDirection * Time.deltaTime);
-
-        if (Input.GetButtonDown("Sprint"))
+        if(canSprint)
         {
-            moveSpeed = movesprint;
-        }
-
-        else if (Input.GetButtonUp("Sprint"))
-        {
-            moveSpeed = originalSpeed;
-        }
-        /////////////////////////////////////////////////////////////////////////////////
-        if(jumpSpeed > originalJumpSpeed)
-        {
-            if(temporalUpgradeCounter <= 0f)
+            if (Input.GetButtonDown("Sprint"))
             {
-                jumpSpeed = originalJumpSpeed;
-                temporalUpgradeCounter = 5f;
+                saveSprintSpeed = moveSpeed;
+                moveSpeed *= 1.5f;
             }
 
-            else
+            else if (Input.GetButtonUp("Sprint"))
             {
-                temporalUpgradeCounter -= Time.deltaTime;
+                moveSpeed = saveSprintSpeed;
             }
         }
 
-        if(canJump == false)
+
+
+        //TEMPORALUPGRADES;////////////////////////////////////////////////////////////////////////////////
+
+        if(nojump)
         {
+            canJump = false;
             if (temporalUpgradeCounter <= 0f)
             {
                 canJump = true;
                 temporalUpgradeCounter = 5f;
+                nojump = false;
+            }
+
+            else
+            {   
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+
+        if (upjump)
+        {
+            jumpSpeed = stateJumpUp;
+            if (temporalUpgradeCounter <= 0f)
+            {
+                jumpSpeed = originalJumpSpeed;
+                temporalUpgradeCounter = 5f;
+                upjump = false;
             }
 
             else
@@ -95,6 +133,62 @@ public class PlayerController : MonoBehaviour
                 temporalUpgradeCounter -= Time.deltaTime;
             }
         }
+
+        if(slowed)
+        {   
+            canSprint = false;
+            if (temporalUpgradeCounter <= 0f)
+            {
+                moveSpeed = saveSpeed;
+                temporalUpgradeCounter = 5f;
+                slowed = false;
+                canSprint = true;
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+
+        }
+
+        if(!canShoot)
+        {
+            if (temporalUpgradeCounter <= 0f)
+            {
+                temporalUpgradeCounter = 5f;
+                canShoot = true;
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+
+        if(damageDown)
+        {
+
+
+            if (temporalUpgradeCounter <= 0f)
+            {
+                damage = saveDamage;
+                temporalUpgradeCounter = 5f;
+                damageDown = false;
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+
+
+
+
+
+
+
         /////////////////////////////////////////////////////////////////////
         if(life <= 0)
         {
@@ -152,7 +246,25 @@ public class PlayerController : MonoBehaviour
 
     public void damagePlayer(float attackDamage)
     {
-        life -= attackDamage;
+        if (doubleHurt)
+        {
+            life -= attackDamage * 2;
+            if (temporalUpgradeCounter <= 0f)
+            {
+                temporalUpgradeCounter = 5f;
+                doubleHurt = false;
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+
+        else
+        {
+            life -= attackDamage;
+        }
     }
 
     //POWER UPs----------------------------------------------------------
@@ -195,20 +307,6 @@ public class PlayerController : MonoBehaviour
         attackSpeed += attackSpeedUp;
 
     }
-
-
-    //-------------------------------------------------------------------
-    //-------------------------------------------------------------------
-    //-------------------------------------------------------------------
-
-
-
-    //POWER UPs TEMPORALES----------------------------------------------------------
-    //-------------------------------------------------------------------
-    //-------------------------------------------------------------------
-    //-------------------------------------------------------------------
-
-    
 
 
     //-------------------------------------------------------------------
