@@ -3765,6 +3765,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7791110057109841261, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000933581106872716, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.015607523
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000933581106872716, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.75492305
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000933581106872716, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.012324187
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000933581106872716, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.65551186
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000933581106872716, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.106000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000933581106872716, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -98.065
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000933581106872716, guid: 20948e329b4c57046b2baa9b7d8a94d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 2.2770002
+      objectReference: {fileID: 0}
+    - target: {fileID: 486417290, guid: 20948e329b4c57046b2baa9b7d8a94d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.219
+      objectReference: {fileID: 0}
+    - target: {fileID: 486417290, guid: 20948e329b4c57046b2baa9b7d8a94d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.151
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20948e329b4c57046b2baa9b7d8a94d3, type: 3}
 --- !u!1001 &6315067331438522949

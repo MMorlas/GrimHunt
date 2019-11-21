@@ -18,6 +18,8 @@ public class Arrow : MonoBehaviour
 
     public string impactTag = "Enemy";
 
+    Quaternion beforeCollision;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,8 @@ public class Arrow : MonoBehaviour
         }
 		if(!hitSomething)
 		{
-			transform.rotation = Quaternion.LookRotation(myBody.velocity);
+            beforeCollision = Quaternion.LookRotation(myBody.velocity);
+            transform.rotation = beforeCollision;
 		}
 
     }
@@ -53,17 +56,12 @@ public class Arrow : MonoBehaviour
             hitSomething = true;
             Stick();
 
-            /* if (collision.collider.tag == "Enemy")
-             {
-                 Damage();
-             }
-             */
 
             ContactPoint contact = collision.contacts[0];
             transform.position = contact.point;
             //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             //transform.rotation = rot;
-
+            transform.rotation = beforeCollision;
         }
 
 
@@ -73,15 +71,11 @@ public class Arrow : MonoBehaviour
 	private void Stick()
 	{
 		//myBody.constraints = RigidbodyConstraints.FreezeAll;
-        boxCollider.enabled = false;
+        //boxCollider.enabled = false;
         myBody.isKinematic = true;
 	}
 
-    /* void Damage()
-     {
 
-     }
-     */
 
 
 
