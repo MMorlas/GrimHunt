@@ -3813,6 +3813,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.151
       objectReference: {fileID: 0}
+    - target: {fileID: 2101299342, guid: 20948e329b4c57046b2baa9b7d8a94d3, type: 3}
+      propertyPath: maxAmmo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101299342, guid: 20948e329b4c57046b2baa9b7d8a94d3, type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101299342, guid: 20948e329b4c57046b2baa9b7d8a94d3, type: 3}
+      propertyPath: reloadTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20948e329b4c57046b2baa9b7d8a94d3, type: 3}
 --- !u!1001 &6315067331438522949

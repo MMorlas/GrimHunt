@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float attackSpeed = 1f;
 
     private CharacterController controller;
+    public Shoot crossbow;
     public float gravityMagnitude = 1.0f; 
     private Vector2 movementAxis; 
     private bool jump = false; 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         isDead = false;
         controller = GetComponent<CharacterController>();
+        crossbow = GameObject.FindGameObjectWithTag("Crossbow").GetComponent<Shoot>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -95,6 +97,11 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetButtonUp("Sprint"))
             {
                 moveSpeed = saveSprintSpeed;
+            }
+
+            if (Input.GetButton("Fire1")) crossbow.Bang();
+            {
+
             }
         }
 
