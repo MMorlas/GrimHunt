@@ -49,11 +49,15 @@ public class PlayerController : MonoBehaviour
     public bool canShoot;
     public bool doubleHurt;
     public bool damageDown;
+    public bool canBeHurt;
+    public bool machineGun;
+    public bool doubleVelocity;
 
     public float halfDamage;
     public float halfSpeed;
     public float saveDamage;
     public float saveSpeed;
+    public float saveAttackSpeed;
     public float stateJumpUp = 14;
 
 
@@ -72,6 +76,7 @@ public class PlayerController : MonoBehaviour
         canJump = true;
         canSprint = true;
         canShoot = true;
+        canBeHurt = true;
 
         upjump = false;
         nojump = false;
@@ -109,6 +114,13 @@ public class PlayerController : MonoBehaviour
 
         //TEMPORALUPGRADES;////////////////////////////////////////////////////////////////////////////////
 
+
+
+        //BAD;////////////////////////////////////////////////////////////////////////////////
+
+
+
+
         if(nojump)
         {
             canJump = false;
@@ -125,21 +137,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (upjump)
-        {
-            jumpSpeed = stateJumpUp;
-            if (temporalUpgradeCounter <= 0f)
-            {
-                jumpSpeed = originalJumpSpeed;
-                temporalUpgradeCounter = 5f;
-                upjump = false;
-            }
-
-            else
-            {
-                temporalUpgradeCounter -= Time.deltaTime;
-            }
-        }
 
         if(slowed)
         {   
@@ -191,13 +188,66 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        //GOOD////////////////////////////////////////////////////////////////////////////////
 
+        if (upjump)
+        {
+            jumpSpeed = stateJumpUp;
+            if (temporalUpgradeCounter <= 0f)
+            {
+                jumpSpeed = originalJumpSpeed;
+                temporalUpgradeCounter = 5f;
+                upjump = false;
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+
+
+        if (machineGun)
+        {
+
+
+            if (temporalUpgradeCounter <= 0f)
+            {
+                attackSpeed = saveAttackSpeed;
+                temporalUpgradeCounter = 5f;
+                machineGun = false;
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+        }
+
+
+        if (doubleVelocity)
+        {
+
+            if (temporalUpgradeCounter <= 0f)
+            {
+                moveSpeed = saveSpeed;
+                temporalUpgradeCounter = 5f;
+                doubleVelocity = false;
+ 
+            }
+
+            else
+            {
+                temporalUpgradeCounter -= Time.deltaTime;
+            }
+
+        }
 
 
 
 
         /////////////////////////////////////////////////////////////////////
-        if(life <= 0)
+        if (life <= 0)
         {
             isDead = true;
         }
@@ -253,25 +303,30 @@ public class PlayerController : MonoBehaviour
 
     public void damagePlayer(float attackDamage)
     {
-        if (doubleHurt)
-        {
-            life -= attackDamage * 2;
-            if (temporalUpgradeCounter <= 0f)
+
+            if (doubleHurt)
             {
-                temporalUpgradeCounter = 5f;
-                doubleHurt = false;
+                life -= attackDamage * 2;
+                if (temporalUpgradeCounter <= 0f)
+                {
+                    temporalUpgradeCounter = 5f;
+                    doubleHurt = false;
+                }
+
+                else
+                {
+                    temporalUpgradeCounter -= Time.deltaTime;
+                }
             }
 
             else
             {
-                temporalUpgradeCounter -= Time.deltaTime;
-            }
-        }
 
-        else
-        {
-            life -= attackDamage;
-        }
+                    life -= attackDamage;
+
+            }
+
+
     }
 
     //POWER UPs----------------------------------------------------------

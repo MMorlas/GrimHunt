@@ -25,6 +25,7 @@ public class Shoot : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
         currentAmmo = maxAmmo;
         reloading = false;
         isShooting = false;
@@ -35,41 +36,8 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        /*
-        if(player.canShoot)
-        {
 
-            //Bang();
-            //if (isShooting || reloading) return;
-            //if (currentAmmo <= 0)
-            //{
-
-
-            //    //   soundWeapon.Play(1);
-            //    Reload();
-            //   //anim.SetTrigger("Reload");
-
-            //    return;
-            //}
-            //isShooting = true;
-            //currentAmmo--;
-
-            //if (Input.GetMouseButtonDown(0))
-            //{
-
-            //    Debug.Log("DISPARA");
-            //    GameObject go = Instantiate(arrowPrefab, arrowSpawn.position, Quaternion.identity);
-            //    Rigidbody rb = go.GetComponent<Rigidbody>();
-            //    rb.velocity = cam.transform.forward * shootForce;
-            //   // currentAmmo--;
-
-            //}
-
-            //StartCoroutine(Shooting());
-
-
-        }
-        */
+        fireRate = player.attackSpeed;
 
     }
 

@@ -80,7 +80,10 @@
     <Compile Include="Assets\Scripts\RandomGold.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\DamageDown.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\DoubleHurt.cs" />
+    <Compile Include="Assets\Scripts\RandomUpgrade\DoubleVelocity.cs" />
+    <Compile Include="Assets\Scripts\RandomUpgrade\Inmortal.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\JumpUp.cs" />
+    <Compile Include="Assets\Scripts\RandomUpgrade\MachineGun.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\NoJump.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\NoShoot.cs" />
     <Compile Include="Assets\Scripts\RandomUpgrade\Slowed.cs" />
