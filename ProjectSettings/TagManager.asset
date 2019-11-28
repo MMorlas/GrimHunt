@@ -13,6 +13,9 @@ TagManager:
   - ShopE
   - Enemy
   - RandomSpawn
+  - EnemyBase
+  - Arrow
+  - Critic
   layers:
   - Default
   - TransparentFX

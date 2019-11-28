@@ -18,9 +18,15 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     public Shoot crossbow;
+<<<<<<< HEAD
+    public float gravityMagnitude = 1.0f;
+    private Vector2 movementAxis;
+    private bool jump = false;
+=======
     public float gravityMagnitude = 1.0f; 
     private Vector2 movementAxis; 
     private bool jump = false; 
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
     private Vector3 moveDirection;
 
     [Header("Properties")]
@@ -30,12 +36,25 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float movesprint = 8f;
     public float saveSprintSpeed;
+<<<<<<< HEAD
+    public bool canJump;
+=======
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
 
     public bool isDead;
 
+    [Header("CounterTemporal")]
     public float temporalUpgradeCounter;
+    public float temporalUpJump;
+    public float temporalNoJump;
+    public float temporalSlowed;
+    public float temporalNoShoot;
+    public float temporalDoubleHurt;
+    public float temporalDamageDown;
+    public float temporalMachineGun;
+    public float temporalDoubleVelocity;
 
-    public bool canJump;
+
 
 
     private PlayerUI ui;
@@ -48,11 +67,19 @@ public class PlayerController : MonoBehaviour
     public bool canSprint;
     public bool canShoot;
     public bool doubleHurt;
+<<<<<<< HEAD
+    public bool getDoubleHurt;
+=======
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
     public bool damageDown;
     public bool canBeHurt;
     public bool machineGun;
     public bool doubleVelocity;
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
     public float halfDamage;
     public float halfSpeed;
     public float saveDamage;
@@ -91,7 +118,11 @@ public class PlayerController : MonoBehaviour
         GravitySimulation();
         MovementSimulation();
         controller.Move(moveDirection * Time.deltaTime);
+<<<<<<< HEAD
+        if (canSprint)
+=======
         if(canSprint)
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
         {
             if (Input.GetButtonDown("Sprint"))
             {
@@ -105,9 +136,13 @@ public class PlayerController : MonoBehaviour
             }
 
             if (Input.GetButton("Fire1")) crossbow.Bang();
+<<<<<<< HEAD
+
+=======
             {
 
             }
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
         }
 
 
@@ -121,6 +156,34 @@ public class PlayerController : MonoBehaviour
 
 
 
+<<<<<<< HEAD
+        if (nojump)
+        {
+            canJump = false;
+            if (temporalNoJump <= 0f)
+            {
+                canJump = true;
+                temporalNoJump = 5f;
+                nojump = false;
+            }
+
+            else
+            {
+                temporalNoJump -= Time.deltaTime;
+            }
+        }
+
+
+        if (slowed)
+        {
+            canSprint = false;
+            if (temporalSlowed <= 0f)
+            {
+                moveSpeed = saveSpeed;
+                temporalSlowed = 5f;
+                slowed = false;
+                canSprint = true;
+=======
         if(nojump)
         {
             canJump = false;
@@ -162,10 +225,24 @@ public class PlayerController : MonoBehaviour
             {
                 temporalUpgradeCounter = 5f;
                 canShoot = true;
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
             }
 
             else
             {
+<<<<<<< HEAD
+                temporalSlowed -= Time.deltaTime;
+            }
+
+        }
+
+        if (!canShoot)
+        {
+            if (temporalNoShoot <= 0f)
+            {
+                temporalNoShoot = 5f;
+                canShoot = true;
+=======
                 temporalUpgradeCounter -= Time.deltaTime;
             }
         }
@@ -179,10 +256,63 @@ public class PlayerController : MonoBehaviour
                 damage = saveDamage;
                 temporalUpgradeCounter = 5f;
                 damageDown = false;
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
             }
 
             else
             {
+<<<<<<< HEAD
+                temporalNoShoot -= Time.deltaTime;
+            }
+        }
+
+        if (damageDown)
+        {
+
+
+            if (temporalDamageDown <= 0f)
+            {
+                damage = saveDamage;
+                temporalDamageDown = 5f;
+                damageDown = false;
+            }
+
+            else
+            {
+                temporalDamageDown -= Time.deltaTime;
+            }
+        }
+
+
+        if (doubleHurt)
+        {
+            getDoubleHurt = true;
+
+            if (temporalDoubleHurt <= 0f)
+            {
+                temporalDoubleHurt = 5f;
+                doubleHurt = false;
+                getDoubleHurt = false;
+            }
+
+            else
+            {
+                temporalDoubleHurt -= Time.deltaTime;
+            }
+        }
+
+
+
+        //GOOD////////////////////////////////////////////////////////////////////////////////
+
+        if (upjump)
+        {
+            jumpSpeed = stateJumpUp;
+            if (temporalUpJump <= 0f)
+            {
+                jumpSpeed = originalJumpSpeed;
+                temporalUpJump = 5f;
+=======
                 temporalUpgradeCounter -= Time.deltaTime;
             }
         }
@@ -197,12 +327,13 @@ public class PlayerController : MonoBehaviour
             {
                 jumpSpeed = originalJumpSpeed;
                 temporalUpgradeCounter = 5f;
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
                 upjump = false;
             }
 
             else
             {
-                temporalUpgradeCounter -= Time.deltaTime;
+                temporalUpJump -= Time.deltaTime;
             }
         }
 
@@ -211,16 +342,27 @@ public class PlayerController : MonoBehaviour
         {
 
 
+<<<<<<< HEAD
+            if (temporalMachineGun <= 0f)
+            {
+                attackSpeed = saveAttackSpeed;
+                temporalMachineGun = 5f;
+=======
             if (temporalUpgradeCounter <= 0f)
             {
                 attackSpeed = saveAttackSpeed;
                 temporalUpgradeCounter = 5f;
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
                 machineGun = false;
             }
 
             else
             {
+<<<<<<< HEAD
+                temporalMachineGun -= Time.deltaTime;
+=======
                 temporalUpgradeCounter -= Time.deltaTime;
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
             }
         }
 
@@ -228,17 +370,26 @@ public class PlayerController : MonoBehaviour
         if (doubleVelocity)
         {
 
+<<<<<<< HEAD
+            if (temporalDoubleVelocity <= 0f)
+            {
+                moveSpeed = saveSpeed;
+                temporalDoubleVelocity = 5f;
+                doubleVelocity = false;
+
+=======
             if (temporalUpgradeCounter <= 0f)
             {
                 moveSpeed = saveSpeed;
                 temporalUpgradeCounter = 5f;
                 doubleVelocity = false;
  
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
             }
 
             else
             {
-                temporalUpgradeCounter -= Time.deltaTime;
+                temporalDoubleVelocity -= Time.deltaTime;
             }
 
         }
@@ -254,22 +405,22 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
+
     private void GravitySimulation()
     {
-        
-        if (controller.isGrounded && !jump) 
+
+        if (controller.isGrounded && !jump)
         {
-           
-            moveDirection.y = forceToGround; 
+
+            moveDirection.y = forceToGround;
         }
-        else 
+        else
         {
-            moveDirection += Physics.gravity * gravityMagnitude * Time.deltaTime; 
+            moveDirection += Physics.gravity * gravityMagnitude * Time.deltaTime;
 
             jump = false;
         }
-        
+
     }
 
     private void MovementSimulation()
@@ -277,14 +428,14 @@ public class PlayerController : MonoBehaviour
         Vector3 localDirection = transform.forward * movementAxis.y + transform.right * movementAxis.x;
 
         moveDirection.x = localDirection.x * moveSpeed;
-        moveDirection.z = localDirection.z * moveSpeed; 
+        moveDirection.z = localDirection.z * moveSpeed;
 
 
     }
 
-    public void StartJump() 
+    public void StartJump()
     {
-        if(canJump)
+        if (canJump)
         {
             if (controller.isGrounded)
             {
@@ -295,15 +446,29 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
-    public void SetAxis(Vector2 inputAxis) 
+
+    public void SetAxis(Vector2 inputAxis)
     {
         movementAxis = inputAxis;
     }
+    
 
     public void damagePlayer(float attackDamage)
     {
 
+<<<<<<< HEAD
+        if (getDoubleHurt)
+        {
+            life -= attackDamage * 2;
+        }
+
+        else
+        {
+
+            life -= attackDamage;
+
+        }
+=======
             if (doubleHurt)
             {
                 life -= attackDamage * 2;
@@ -325,6 +490,7 @@ public class PlayerController : MonoBehaviour
                     life -= attackDamage;
 
             }
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
 
 
     }
@@ -375,4 +541,8 @@ public class PlayerController : MonoBehaviour
     //-------------------------------------------------------------------
     //-------------------------------------------------------------------
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
 }

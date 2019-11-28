@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
 	private float lifeTimer = 5f;
 	private float timer;
 	private bool hitSomething = false;
+    private EnemyBase enemy;
 
     Collider boxCollider;
 
@@ -17,6 +18,7 @@ public class Arrow : MonoBehaviour
 
 
     public string impactTag = "Enemy";
+    public string criticTag = "Critic";
 
     Quaternion beforeCollision;
 
@@ -28,6 +30,7 @@ public class Arrow : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(myBody.velocity);
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        enemy = GameObject.FindGameObjectWithTag("EnemyBase").GetComponent<EnemyBase>();
 
         hitDamage = player.damage;
         
@@ -76,17 +79,46 @@ public class Arrow : MonoBehaviour
 	}
 
 
+<<<<<<< HEAD
+     
+=======
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
 
-
-
-    private void OnTriggerEnter(Collider collision)
+    public void OnTriggerEnter(Collider collision)
     {
+
+        if (collision.tag == criticTag)
+        {
+            Debug.Log("CRITAS");
+            player.damage *=2;
+        }
+
         if (collision.tag == impactTag)
         {
             Stick();
             collision.GetComponent<EnemyBase>().Damage(hitDamage);
+
+
+            /*
+            if (enemy.crit)
+            {
+                collision.GetComponent<EnemyBase>().Damage(hitDamage * 2);
+                enemy.crit = false;
+            }
+            */
+
+            /*
+            else
+            {
+                collision.GetComponent<EnemyBase>().Damage(hitDamage);
+            }
+            */
+
         }
     }
+
+
+
 }
 
 

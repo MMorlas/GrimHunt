@@ -4,10 +4,33 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-	public Camera cam;
-	public GameObject arrowPrefab;
-	public Transform arrowSpawn;
-	public float shootForce = 20f;
+    public Camera cam;
+    public GameObject arrowPrefab;
+    public Transform arrowSpawn;
+    public float shootForce = 20f;
+
+    [Header("Propierties")]
+    public int maxAmmo;
+    public int currentAmmo;
+    public float fireRate;
+    public float reloadTime;
+
+    [Header("State")]
+    public bool reloading;
+    public bool isShooting;
+
+    PlayerController player;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        currentAmmo = maxAmmo;
+        reloading = false;
+        isShooting = false;
+
+    }
 
     [Header("Propierties")]
     public int maxAmmo;
@@ -96,6 +119,10 @@ public class Shoot : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         reloading = false;
         currentAmmo = maxAmmo;
+<<<<<<< HEAD
+        // ui.UpdateAmmoUI(currentAmmo);
+=======
        // ui.UpdateAmmoUI(currentAmmo);
+>>>>>>> ecee1fa5512a68db35515b1972090caab75f090b
     }
 }

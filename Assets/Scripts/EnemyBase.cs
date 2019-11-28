@@ -7,6 +7,8 @@ public class EnemyBase : MonoBehaviour
     public float maxLife;
     public float currentLife;
 
+    public bool crit;
+
     public float speed;
 
 	SpawnTemporalUpgrade spawn;
@@ -17,6 +19,7 @@ public class EnemyBase : MonoBehaviour
     {
 		spawn = GameObject.FindGameObjectWithTag("RandomSpawn").GetComponent<SpawnTemporalUpgrade>();
         currentLife = maxLife;
+        crit = false;
     }
 
     // Update is called once per frame
